@@ -3,6 +3,24 @@ import gdown
 import shutil
 from os import path
 from oauth2client.service_account import ServiceAccountCredentials
+\
+# Set Sheet URLs here
+sheet_urls = {
+        'slusd':'https://docs.google.com/spreadsheets/d/1lgXm6YQTCR3AHIjVrSDkgvkVX9cwx-2O-taeP_ss2zw/edit?usp=sharing',
+        'garfield': None,
+        'jefferson':'https://docs.google.com/spreadsheets/d/1LYA0097njxt58udNwTohsTJTcGB4fK34o4XOv9B_8qk/edit#gid=0',
+        'madison': None,
+        'mckinley': None,
+        'monrow': None,
+        'roosevelt': None,
+        'washington': None,
+        'wilson': None,
+        'bancroft': None,
+        'muir': None,
+        'lincoln': None,
+        'slhs': None,
+        'adult': None
+    } 
 
 def read_gsheet(sheet_url, credentials_file='creds.json', sheet_name='Sheet1',columns=['name','Folder ID']):
     """Reads google sheet information. Sheet MUST be accessable to anyone with the link
@@ -47,22 +65,7 @@ if __name__ == "__main__":
     gsheets-service@polar-winter-333619.iam.gserviceaccount.com
 
     """
-    sheet_urls = {
-        'slusd':'https://docs.google.com/spreadsheets/d/1lgXm6YQTCR3AHIjVrSDkgvkVX9cwx-2O-taeP_ss2zw/edit?usp=sharing',
-        'garfield': None,
-        'jefferson':'https://docs.google.com/spreadsheets/d/1LYA0097njxt58udNwTohsTJTcGB4fK34o4XOv9B_8qk/edit#gid=0',
-        'madison': None,
-        'mckinley': None,
-        'monrow': None,
-        'roosevelt': None,
-        'washington': None,
-        'wilson': None,
-        'bancroft': None,
-        'muir': None,
-        'lincoln': None,
-        'slhs': None,
-        'adult': None
-    } 
+    
     image_folder_home = '/var/www/html/images'
     for school,sheet_url in sheet_urls.items():
         if sheet_url == None:

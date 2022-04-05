@@ -3,7 +3,8 @@ import gdown
 import shutil
 from os import path
 from oauth2client.service_account import ServiceAccountCredentials
-\
+# Unable to install until Python >= 3.8 is installed
+# from slusdlib.core import read_gsheet
 # Set Sheet URLs here
 sheet_urls = {
         'slusd':'https://docs.google.com/spreadsheets/d/1lgXm6YQTCR3AHIjVrSDkgvkVX9cwx-2O-taeP_ss2zw/edit?usp=sharing',
@@ -69,7 +70,6 @@ if __name__ == "__main__":
     image_folder_home = '/var/www/html/images'
     for school,sheet_url in sheet_urls.items():
         if sheet_url == None:
-            
             continue
         print('~~~Sheet Exists~~~~: ' ,sheet_url)
         google_drive_folder_info = read_gsheet(sheet_url,'/home/administrator/gdrive_downloader/creds.json')

@@ -6,6 +6,9 @@ import shutil
 from os import path
 from oauth2client.service_account import ServiceAccountCredentials
 from icecream import ic
+import time
+
+
 # from slusdlib import core
 # # Unable to install until Python >= 3.8 is installed
 # from slusdlib.core import read_gsheet
@@ -87,12 +90,18 @@ if __name__ == "__main__":
             if path.exists(folder_path): 
                 ic(f'File {folder_path} already exists')
                 # continue
-                # shutil.rmtree(folder_path)
+                shutil.rmtree(folder_path)
             ic(folder_url)
+            ic(school)
+            ic(folder_path)
             try:
                 gdown.download_folder(folder_url, output=folder_path, quiet=False)
             except Exception as e:
                 ic(e)
+                time.sleep(45)
+                ic('Retrying')
+                gdown.download_folder(folder_url, output=folder_path, quiet=False)
+            time.sleep(10)
                 # core.log(e)
             # response = requests.get(folder_url, headers={'Authorization': 'Bearer {0}'.format(creds['token'])})
             # response.raise_for_status()
